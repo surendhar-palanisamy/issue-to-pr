@@ -37,6 +37,17 @@ jobs:
           permission-issues: "write"
           permission-pull-requests: "write"
 
+      - name: "Debug environment"
+        run: |
+          echo "TITLE: $TITLE"
+          echo "DESCRIPTION: $DESCRIPTION"
+          echo "EVENT_NAME: $EVENT_NAME"
+          echo "GITHUB_TOKEN length: ${#GITHUB_TOKEN}"
+          echo "IS_PULL_REQUEST: $IS_PULL_REQUEST"
+          echo "ISSUE_NUMBER: $ISSUE_NUMBER"
+          echo "REPOSITORY: $REPOSITORY"
+          echo "ADDITIONAL_CONTEXT: $ADDITIONAL_CONTEXT"
+
       - name: "Run Gemini CLI"
         id: "run_gemini"
         uses: "google-github-actions/run-gemini-cli@v0" # ratchet:exclude
@@ -80,7 +91,7 @@ jobs:
                     "--rm",
                     "-e",
                     "GITHUB_PERSONAL_ACCESS_TOKEN",
-                    "ghcr.io/github/github-mcp-server:v0.18.0"
+                    "ghcr.io/github/github-mcp-server:v0.20.2"
                   ],
                   "includeTools": [
                     "add_issue_comment",
