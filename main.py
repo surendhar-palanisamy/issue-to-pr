@@ -1,1 +1,1 @@
-print('Hi valky')
+print('Hi wiz')
